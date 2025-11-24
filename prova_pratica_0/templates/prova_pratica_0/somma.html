@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Prova Pratica Fila A {%endblock title%}
+
+{%block content%}
+    <b>Numero1 = {{ var1 }}</b> <br/>
+    <b>Numero2 = {{ var2 }}</b> <br/>
+
+    <b>Somma = {{somma}} </b> <br/>
+    {% if var1 < var2 %}
+        <p style= "color:red">Numero1 è minore di Numero2: {{var1}}</p>
+    {% endif %}
+    {% if var1 > var2 %}
+        <p style= "color:green">Numero1 è maggiore di Numero2: {{var1}}</p>
+    {% endif %}
+
+    {% if var1 > var2 %}
+        <p style= "color:red">Numero2 è minore di Numero1: {{var2}}</p>
+    {% endif %}
+    {% if var1 < var2 %}
+        <p style= "color:green">Numero2 è maggiore di Numero1: {{var2}}</p>
+    {% endif %}
+
+    {% if var1 == var2 %}
+        <p style= "color:black">Numero1 è uguale a Numero2, la loro somma:  {{somma}} </p>
+    {% endif %}
+{%endblock content%}

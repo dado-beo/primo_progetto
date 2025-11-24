@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Prova Pratica Fila A {%endblock title%}
+
+{%block content%}
+    <p>Ecco la lista di 30 numeri:</p>
+
+    {% for x in list1 %}
+        <i>{{ forloop.counter }} </i> - {{ x }}<br>
+    {% endfor %}
+
+    {% if media < 6 %}
+        <p style= "color:red">La media è minore di 6: {{media}}</p>
+    {% endif %}
+    {% if media > 6 %}
+        <p style= "color:green">La media è maggiore di 6: {{media}}</p>
+    {% endif %}
+    {% if media == 6 %}
+        <p style= "color:black">La media è uguale a 6: {{media}} </p>
+    {% endif %}
+
+{%endblock content%}
