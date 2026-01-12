@@ -8,7 +8,7 @@ def home(request):
     giornalisti = Giornalista.objects.all()
     context = {"articoli": articoli, "giornalisti": giornalisti}
     print(context)
-    return render(request, "homepage.html", context)
+    return render(request, "news/homepage.html", context)
 
 """ 
 def home(request):
@@ -43,4 +43,7 @@ def articoloDetailView(request, pk):
     # articolo = Articolo.objects.get(pk=pk)
     articolo = get_object_or_404(Articolo, pk=pk)
     context = {"articolo":articolo}
-    return render(request, "articolo_detail.html", context)
+    return render(request, "news/articolo_detail.html", context)
+
+def index(request):
+    return render(request, "news/index.html")
