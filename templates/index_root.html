@@ -4,9 +4,11 @@
 
 {%block content%}
 <ol>
+    <li><a href="/"=>Primo progetto</a></li>
     <li><a href="/admin">pannello admin</a></li>
     <li><a href="{% url 'prima_app:index'%}">Index prima app</a></li>
     <li><a href="{% url 'seconda_app:index'%}">Index seconda app</a></li>
     <li><a href="{% url 'prova_pratica_0:index'%}">Index prova pratica</a></li>
+    <li><a href="{% url 'news:index'%}">Index News</a></li>
 </ol>
 {%endblock content%}
