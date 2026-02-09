@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{%block title%}
+    Articoli e Giornalisti
+{%endblock title%}
+{%block content%}
+        <h4> {{ titolo }}</h4>
+        {% for articolo in articoli %}
+            <p><strong>Titolo: </strong>
+                {% comment %} metodo non ottimale per creare link {% endcomment %}
+                <a href = "/news/articoli/{{ articolo.id }}"> {{ articolo.titolo }} </a>
+            </p>
+            <p><strong>Contenuto: </strong>
+                {{ articolo.contenuto }}
+            </p>
+            <p><strong>Autore: </strong>
+                {% comment %} metodo ottimale per creare link {% endcomment %}
+                <a href = {% url 'news:giornalista_detail' articolo.giornalista.id %}> {{ articolo.giornalista }} </a>
+            </p>
+            <hr>
+        {% endfor %}
+{%endblock content%}

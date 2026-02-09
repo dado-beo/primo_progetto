@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%block title%}
+Esempio di query
+{%endblock title%}
+{%block content%}
+    {% for foo in risultati_no_ciclo.values %}
+        <p><strong>{{foo.0}}:</strong> {{foo.1}}</p>
+    {% endfor %}
+
+    {% for foo in risultati_ciclo.values %}
+        <p><strong>{{foo.0}}:</strong>
+        <ul>
+            {% for foo2 in foo.1.values %}
+                {% for key,content in foo2.items %}
+                    <li><p><strong>{{key}}:</strong> {{content}}</p></li>
+                    {% if key == "visualizzazioni" or key == "anno_di_nascita"%}
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{%endblock content%}

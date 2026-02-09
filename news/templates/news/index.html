@@ -6,5 +6,7 @@
     <ol>
         <li><a href="{% url 'news:homeview'%}">Home page benvenuto</a></li>
         <li><a href="{% url 'news:articolo_detail' 1%}">Dettagli articolo</a></li>
+        <li><a href="{% url 'news:lista_articoli' 1%}">Lista articoli</a></li>
+        <li><a href="{% url 'news:query'%}">Query</a></li>
     </ol>
 {%endblock content%}
