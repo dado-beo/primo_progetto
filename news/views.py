@@ -118,7 +118,7 @@ def query(request):
     articoli_mese_anno = Articolo.objects.filter(data__month = 1, data__year=2023)
 
     # 17 Giornalisti con almeno un articolo con più di 100 visualizzazioni
-    # giornalisti_con_articoli_popolari = Giornalista.objects.filter(articoli__visualizzazioni__gte=100).distinct()
+    #giornalisti_con_articoli_popolari = Giornalista.objects.filter(articoli__visualizzazioni__gte=100).distinct()
     """
     spiegazione dettagliata.
     giornalista.objects: Inizia dalla classe del modello Giornalista.
@@ -152,7 +152,7 @@ def query(request):
 
     # Creare il dizionario context
     context = {
-        'articoli_no_ciclo': 
+        'risultati_no_ciclo': 
         {
             'numero_totale_articoli': ('numero_totale_articoli', numero_totale_articoli),
             'giornalista_1' : ('giornalista_1', giornalista_1),
@@ -160,7 +160,7 @@ def query(request):
             'articolo_più_visualizzato': ('articolo_più_visualizzato', articolo_più_visualizzato),
             'giornalista_giovane': ('giornalista_giovane', giornalista_giovane),
         },
-        'articoli_ciclo': 
+        'risultati_ciclo': 
         {
             'articoli_congome': ('articoli_cognome', articoli_cognome),
             'articoli_ordinati': ('articoli_ordinati', articoli_ordinati),
@@ -178,13 +178,14 @@ def query(request):
             'articoli_con_or': ('articoli_con_or', articoli_con_or),
             'articoli_con_not': ('articoli_con_not', articoli_con_not),
             'articoli_mese_anno': ('articoli_mese_anno', articoli_mese_anno),
-            # 'giornalisti_con_articoli_popolari': ('giornalisti_con_articoli_popolari', giornalisti_con_articoli_popolari),
+            #'giornalisti_con_articoli_popolari': ('giornalisti_con_articoli_popolari', giornalisti_con_articoli_popolari)
         } 
     }
     return render(request, 'news/query.html', context)
 
 def giornalistaDetailView(request, pk):
-    giornalista = get_object_or_404(Giornalista, pk = pk)
-    articoli = Articolo.objects.all()
-    context = {"giornalista": giornalista, "articoli":articoli}
+    giornalista = Giornalista.objects.get(pk=pk)
+    articoli_giornalista = Articolo.objects.filter(giornalista=pk)
+    context = {"giornalista": giornalista,
+               "articoli_giornalista" : articoli_giornalista}
     return render(request, "news/giornalista_detail.html", context)
