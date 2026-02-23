@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+
+{%block title%}Lista Voti e Assenze {%endblock title%}
+
+{%block content%}
+    <ul>
+    {% for nome, dati in voti.items %}
+        <li> {{ nome }} </li>
+        <ul>
+        {% for materia, voto, assenze in dati %}
+            <li> {{ materia }}, {{ voto }}, {{ assenze }} </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+    </ul>
+{%endblock content%}

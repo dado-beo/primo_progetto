@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+
+
+{%block title%} Lista verifiche{%endblock title%}
+
+{%block content%}
+    <h3>Verifiche:</h3>
+    <h4>Risultati</h4>
+
+    <ul>
+        <li>Voto massimo: {{ max }}</li>
+        <li>Materie con voto massimo:
+            {% for materia in max_materia %}
+                {{ materia }} 
+            {% endfor %}
+        </li>
+        <li>Studenti con voto massimo:
+            {% for studente in max_studente %}
+                {{ studente }} 
+            {% endfor %}
+        </li>
+        <li>Voto minimo: {{ min }}</li>
+        <li>Materie con voto minimo:
+            {% for materia in min_materia %}
+                {{ materia }}
+            {% endfor %}
+        </li>
+        <li>Studenti con voto minimo:
+            {% for studente in min_studente %}
+                {{ studente }} 
+            {% endfor %}
+        </li>
+    </ul>
+{%endblock content%}

@@ -1,6 +1,6 @@
 {%extends "base.html"%}
 
-{%block title%} {{block.super}} | Chi siamo {%endblock title%}
+{%block title%} {{block.super}} | Voti {%endblock title%}
 
 {%block content%}
 <ol>
@@ -10,5 +10,6 @@
     <li><a href="{% url 'seconda_app:index'%}">Index seconda app</a></li>
     <li><a href="{% url 'prova_pratica_0:index'%}">Index prova pratica</a></li>
     <li><a href="{% url 'news:index'%}">Index News</a></li>
+    <li><a href="{% url 'voti:index'%}">Index Voti</a></li>
 </ol>
 {%endblock content%}
