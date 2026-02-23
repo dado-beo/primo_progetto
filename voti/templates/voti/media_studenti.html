@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+
+{%block title%}Media Voti {%endblock title%}
+
+{%block content%}
+    <ul>
+    {% for studenti, medie in dati.items%}
+        <li> {{ studenti }} : {{ medie }}</li>
+    {% endfor %}
+    </ul>
+{%endblock content%}

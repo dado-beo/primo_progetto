@@ -1,0 +1,13 @@
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Chi siamo {%endblock title%}
+
+{%block content%}
+    <ol>
+        <li><a href="/"=>Index root</a></li>
+        <li><a href="{% url 'voti:lista_materie'%}">Lista materie</a></li>
+        <li><a href="{% url 'voti:voti_studenti'%}">Voti studenti</a></li>
+        <li><a href="{% url 'voti:media_studenti'%}">Media studenti</a></li>
+        <li><a href="{% url 'voti:max_min_voti'%}">Max min voti</a></li>
+    </ol>
+{%endblock content%}

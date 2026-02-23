@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+
+{%block title%}Lista Materie {%endblock title%}
+
+{%block content%}
+    <ul>
+    {% for materia in materie %}
+        <li> {{ materia }} </li>
+    {% endfor %}
+    </ul>
+{%endblock content%}
