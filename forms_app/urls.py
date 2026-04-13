@@ -1,7 +1,9 @@
-from django.urls import include, path
-from .views import contatti
-app_name="forms_app"
+from django.urls import path
+from forms_app.views import contatti, listaContatti
 
-urlpatterns = [
+app_name = "forms_app"
+
+urlpatterns=[
     path('contattaci/', contatti, name='contatti'),
+    path('lista_contatti/', listaContatti, name='lista_contatti'),
 ]

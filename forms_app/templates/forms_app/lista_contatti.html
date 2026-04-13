@@ -1,32 +1,24 @@
-{% extends base.html %}
-{% local crispy_forms_tags %}
-{% exteds title %} {{ block.super }} | Lista contatti {% endblock title %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% extends 'base.html' %}
 {% block content%}
-    <table>
+<h2> Lista contatti</h2>
+<table class= "table table-striped">
+    <thead>
         <tr>
-            <table class = "table table-responsive">
-                <tr>
-                    {%if request.user.is_authenticated%}
-                    <td>Cancella</td>
-                    <td>Modifica</td>
-                    {% endif %}
-                    <td>Nome</td>
-                    <td>Cognome</td>
-                    <td>Email</td>
-                    <td>Contenuto</td>
-                </tr>
-            {%for c in contatti %}
-                <tr>
-                    {% if request.user.is_autenticatd %}
-                    <td><a href={%url 'forms_app:elimina-contatto' c.pk%} <i class = "fas fa-eraser"></i></a> </td>
-                    <td><a href={%url 'forms_app:modifica-contatto' c.pk%} <i class = "far fa-edit"></i></a> </td>
-                    {% endif %}
-                    <td>{{c.nome}}</td>
-                    <td>{{c.cognome}}</td>
-                    <td>{{c.email}}</td>
-                    <td>{{c.contenuto}}</td>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Contenuto</th>
         </tr>
-    {%endfor%}
-    </table>
-{% endblock content%}
+    </thead>
+    <tbody>
+        {% for contatto in contatti%}
+            <tr>
+                <td>{{contatto.nome}}</td>
+                <td>{{contatto.cognome}}</td>
+                <td>{{contatto.email}}</td>
+                <td>{{contatto.contenuto}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

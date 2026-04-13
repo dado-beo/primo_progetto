@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .forms import FormContatto
+from .forms import FormContatto, Contatto
 
 # Create your views here.
 def contatti(request):
@@ -39,3 +39,10 @@ def contatti(request):
     # arriviamo a questo punto se si tratta della prima volta che la pagina viene richeista (con metodo GET), o se il form non è valido e ha errori
     context = {"form": form}
     return render(request, "forms_app/contatto.html", context)
+
+def listaContatti(request):
+    contatti = Contatto.objects.all()
+    context = {
+        "contatti": contatti
+    }
+    return render(request, "lista_contatti.html", context)
