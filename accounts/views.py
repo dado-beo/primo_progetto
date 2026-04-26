@@ -11,7 +11,7 @@ def signup(request):
             login(request, user)
             return redirect('/')
         
-        else: # richiesta di tipo get mostro il form vuoto
-            form = SignUpForm()
+    else: # richiesta di tipo get mostro il form vuoto
+        form = SignUpForm()
         
-        return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})

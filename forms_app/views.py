@@ -45,4 +45,4 @@ def listaContatti(request):
     context = {
         "contatti": contatti
     }
-    return render(request, "lista_contatti.html", context)
+    return render(request, "forms_app/lista_contatti.html", context)

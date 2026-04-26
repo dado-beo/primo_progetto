@@ -1,8 +1,8 @@
 <h2>Registrazione</h2>
 
 <form method="post">
-    {%crsf_token%}
-    {{ forms.as_p }}
+    {% csrf_token %}
+    {{ form.as_p }}
 
     <button type="submit">Registrati</button>
 </form>
