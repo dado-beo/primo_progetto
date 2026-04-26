@@ -13,9 +13,14 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -43,6 +48,10 @@ INSTALLED_APPS = [
     'prova_pratica_0',
     'news',
     'voti',
+    'forms_app',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -60,16 +69,13 @@ ROOT_URLCONF = 'primo_progetto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'prima_app/templates'),
-                 os.path.join(BASE_DIR, 'seconda_app/templates/seconda_app'),
-                 os.path.join(BASE_DIR, 'prova_pratica_0/templates'),
-                 os.path.join(BASE_DIR, 'news/templates'),
-                 os.path.join(BASE_DIR, 'voti/templates'),
-                 os.path.join(BASE_DIR, 'templates')],
         
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        
+        'APP_DIRS': True, # Questa opzione farà il lavoro per tutte le singole app
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -132,3 +138,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -2,6 +2,9 @@
 {% load static %}
 <html lang="en">
   <head>
+     <!-- Includi Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -93,17 +96,48 @@
         </div>
         </li>
 
-        </ul>
-    </div>
-    </nav>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contatti
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'forms_app:contatti'%}">Contattaci</a>
+          <a class="dropdown-item" href="{% url 'forms_app:lista_contatti'%}">Lista contatti</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expand="false">
+              {{ request.user.username }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-divider"></div>
+            <form id="logout-form" action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class="btn ft-power" type="submit">Logout</button>
+            </form>
+          </div>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'signup'%}">Registrati</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'login'%}">Login</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
 
-    <div class = "container my-4">
+    <div class="container my-4">
         {%block content%}
         {%endblock content%}
 
         {%block script%}
         {%endblock script%}
     </div>
-
   </body>
 </html>
